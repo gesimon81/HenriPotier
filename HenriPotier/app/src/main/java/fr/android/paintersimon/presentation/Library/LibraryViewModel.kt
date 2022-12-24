@@ -1,4 +1,4 @@
-package fr.android.paintersimon.presentation
+package fr.android.paintersimon.presentation.Library
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

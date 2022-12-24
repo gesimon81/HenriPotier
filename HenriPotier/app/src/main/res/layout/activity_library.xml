@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.LibraryActivity">
+    tools:context=".presentation.Library.LibraryActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -18,6 +18,16 @@
         android:layout_height="match_parent"
         tools:itemCount="5"
         tools:listitem="@layout/card_view_design" />
+
+    <!--
+        TODO : ajouter le bouton pour consulter le panier
+        J'imagine qqch dans le style d'Amazon : https://www.amazon.fr/alm/storefront?almBrandId=TW9ub3ByaXg&ref_=nav_cs_monop
+    -->
+
+    <!--
+        TODO : utiliser les fragments pour gérer deux affichage différents : portrait et landscape
+        tuto fragment : https://www.youtube.com/watch?v=7MMs_lBQVcc
+    -->
 
 </LinearLayout>
 

@@ -1,5 +1,4 @@
-package fr.android.paintersimon.presentation
-import android.view.KeyCharacterMap.load
+package fr.android.paintersimon.presentation.Library
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
-import java.lang.System.load
 
 
 class LibraryAdapter(private var mList: List<Book>) : RecyclerView.Adapter<LibraryAdapter.ViewHolder>() {
 
+
+        private lateinit var mListener : onItemCLickListener
+
+        interface onItemCLickListener{
+            fun onItemClick(position : Int)
+        }
+
+        fun setOnItemCLickLIstener(listener: onItemCLickListener){
+            mListener = listener
+        }
 
 
         // create new views
@@ -23,7 +31,7 @@ class LibraryAdapter(private var mList: List<Book>) : RecyclerView.Adapter<Libra
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.card_view_design, parent, false)
 
-            return ViewHolder(view)
+            return ViewHolder(view, mListener)
         }
 
         // binds the list items to a view
@@ -43,9 +51,15 @@ class LibraryAdapter(private var mList: List<Book>) : RecyclerView.Adapter<Libra
         }
 
         // Holds the views for adding it to image and text
-        class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        class ViewHolder(ItemView: View, listener: onItemCLickListener) : RecyclerView.ViewHolder(ItemView) {
             val textView: TextView = itemView.findViewById(R.id.textView)
             val imageView: ImageView = itemView.findViewById(R.id.imageview)
+
+            init {
+                itemView.setOnClickListener{
+                    listener.onItemClick(bindingAdapterPosition);
+                }
+            }
         }
         fun setList(booksP:List<Book> ){
             mList = booksP

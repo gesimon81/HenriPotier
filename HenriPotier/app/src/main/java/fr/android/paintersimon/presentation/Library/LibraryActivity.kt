@@ -1,14 +1,14 @@
-package fr.android.paintersimon.presentation
+package fr.android.paintersimon.presentation.Library
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
+import fr.android.paintersimon.presentation.Detail.DetailActivity
 
 
 //
@@ -35,7 +35,19 @@ class LibraryActivity : AppCompatActivity() {
 
 
         // This will pass the ArrayList to our Adapter
-        val adapter = LibraryAdapter(ArrayList<Book>())
+        var adapter = LibraryAdapter(ArrayList<Book>())
+
+        // This will trigger when a book is clicked
+        val packageCOntext = this;
+        adapter.setOnItemCLickLIstener(object : LibraryAdapter.onItemCLickListener {
+            override fun onItemClick(position: Int) {
+                println("test")
+                val intent = Intent(packageCOntext, DetailActivity::class.java)
+                //TODO : donner de quoi identifier le livre sur lequel on a cliquer (put extra ...)
+                // pour aller chercher des infos supplémentaires
+                startActivity(intent)
+            }
+        })
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter as RecyclerView.Adapter<*>
@@ -48,8 +60,6 @@ class LibraryActivity : AppCompatActivity() {
 
         viewModel.loadBooks();
 
-        //TODO click listener to trigger detail activity
-        // https://www.youtube.com/watch?v=dB9JOsVx-yY
 
     }
 }
