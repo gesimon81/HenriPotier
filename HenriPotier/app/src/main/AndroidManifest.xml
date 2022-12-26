@@ -27,6 +27,11 @@
             android:label="Detail"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name="fr.android.paintersimon.presentation.Panier.PanierActivity"
+            android:label="Panier"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

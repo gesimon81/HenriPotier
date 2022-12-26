@@ -38,13 +38,14 @@ class LibraryActivity : AppCompatActivity() {
         var adapter = LibraryAdapter(ArrayList<Book>())
 
         // This will trigger when a book is clicked
-        val packageCOntext = this;
+        val packageContext = this;
         adapter.setOnItemCLickLIstener(object : LibraryAdapter.onItemCLickListener {
             override fun onItemClick(position: Int) {
                 println("test")
-                val intent = Intent(packageCOntext, DetailActivity::class.java)
-                //TODO : donner de quoi identifier le livre sur lequel on a cliquer (put extra ...)
-                // pour aller chercher des infos supplémentaires
+                val intent = Intent(packageContext, DetailActivity::class.java)
+                intent.putExtra("title", adapter.getBookTitle(position))
+                intent.putExtra("price", adapter.getBookPrice(position))
+                intent.putExtra("cover", adapter.getBookCover(position))
                 startActivity(intent)
             }
         })

@@ -1,8 +1,10 @@
 package fr.android.paintersimon.data
 
+import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.domain.HenriPotierService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.LinkedList
 
 class MyRetrofit {
 
@@ -12,7 +14,9 @@ class MyRetrofit {
 
     companion object {
         private var instance: Retrofit? = null
-        fun getInstance(): Retrofit? {
+        private var panier: MutableList<String>  =  LinkedList()
+
+        fun getRetrofitInstance(): Retrofit? {
             if (instance == null) {
                 synchronized(MyRetrofit::class.java) {
                     if (instance == null) {
@@ -22,13 +26,16 @@ class MyRetrofit {
                             .build()
                     }
                 }
-
             }
             return instance
         }
 
+        fun getPanier():MutableList<String>{
+            return panier
+        }
+
         fun createHenriPotierService(): HenriPotierService? {
-            return  getInstance()?.create(HenriPotierService::class.java);
+            return  getRetrofitInstance()?.create(HenriPotierService::class.java);
         }
     }
 

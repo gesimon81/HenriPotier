@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class LibraryViewModel : ViewModel() { //TODO: move to presentation layer
+class LibraryViewModel : ViewModel() {
 
     val state = MutableLiveData<LibraryState>()
     fun loadBooks() {

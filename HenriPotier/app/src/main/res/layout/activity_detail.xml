@@ -13,23 +13,36 @@
     tools:context=".presentation.Detail.DetailActivity">
 
 
+    <!-- TODO : rendre tout ça plus joli -->
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:text="DetailActivity" />
 
-    <!--
-        TODO : ajouter les composants nécessaires pour montrer le détail d'un livre (titre, prix, ...)
-    -->
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="DetailActivity" />
 
-    <!--
-        TODO : ajouter le bouton pour ajouter au panier
-    -->
+    <ImageView
+        android:id="@+id/coverImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
 
-    <!--
-        TODO : ajouter le bouton pour consulter le panier
-    -->
+    <Button
+        android:id="@+id/addPanierButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter au panier" />
+
+    <Button
+        android:id="@+id/showPanierButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consulter panier" />
 
 </LinearLayout>
 
