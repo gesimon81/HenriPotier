@@ -14,7 +14,7 @@ class MyRetrofit {
 
     companion object {
         private var instance: Retrofit? = null
-        private var panier: MutableList<String>  =  LinkedList()
+        private var panier: MutableList<Book>  =  LinkedList()
 
         fun getRetrofitInstance(): Retrofit? {
             if (instance == null) {
@@ -30,7 +30,7 @@ class MyRetrofit {
             return instance
         }
 
-        fun getPanier():MutableList<String>{
+        fun getPanier():MutableList<Book>{
             return panier
         }
 

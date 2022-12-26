@@ -14,7 +14,7 @@ class PanierActivity : AppCompatActivity() {
 
         println("timber start PanierActivity")
 
-        //TODO peupler composants pour afficher panier
+        //TODO peupler composants pour afficher panier, avec un bouton pour les retirer
         val panier = getPanier()
     }
 }

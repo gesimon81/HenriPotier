@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import fr.android.paintersimon.R
 import fr.android.paintersimon.data.MyRetrofit.Companion.getPanier
+import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.presentation.Panier.PanierActivity
 
 
@@ -21,32 +23,39 @@ class DetailActivity : AppCompatActivity() {
         println("timber start DetailActivity")
 
         val intent = getIntent();
-        val title = intent.getStringExtra("title").orEmpty()
-        val cover = intent.getStringExtra("cover").orEmpty()
-        val price = intent.getStringExtra("price").orEmpty()
+        val book: Book? = intent.getParcelableExtra<Book>("book")
+        if (book == null){
+            //TODO : handle null book
+        }else{
+            //peupler les composants du layout avec le détail du livre
 
-        //peupler les composants du layout avec le détail du livre
+            val titleTextVIew = findViewById<TextView>(R.id.titleTextView)
+            titleTextVIew.setText(book.title)
 
-        val titleTextVIew = findViewById<TextView>(R.id.titleTextView)
-        titleTextVIew.setText(title)
+            val priceTextView = findViewById<TextView>(R.id.priceTextView)
+            priceTextView.setText(book.price)
 
-        val priceTextView = findViewById<TextView>(R.id.priceTextView)
-        priceTextView.setText(price)
+            val coverImageView = findViewById<ImageView>(R.id.coverImageView)
+            Picasso.get().load(book.cover).into(coverImageView);
 
-        val coverImageView = findViewById<ImageView>(R.id.coverImageView)
-        Picasso.get().load(cover).into(coverImageView);
+            val packageContext = this
 
-        val addPanierButton = findViewById<Button>(R.id.addPanierButton)
-        var panier = getPanier()
-        panier.add(title)
-        // TODO : fournir un feedback utilisateur avec un petit toast ?
+            var panier = getPanier()
+            val addPanierButton  = findViewById<Button>(R.id.addPanierButton)
+            addPanierButton.setOnClickListener {
+                panier.add(book)
+                //TODO : add toast "Livre ajouté au panier"
+                println(panier.size)
+            }
 
-        //TODO configurer le bouton consulter panier
-        val packageContext = this
-        val showPanierButton  = findViewById<Button>(R.id.showPanierButton)
-        showPanierButton.setOnClickListener {
-            val intent = Intent(packageContext, PanierActivity::class.java)
-            startActivity(intent)
+            //TODO configurer le bouton consulter panier
+            val showPanierButton  = findViewById<Button>(R.id.showPanierButton)
+            showPanierButton.setOnClickListener {
+                val intent = Intent(packageContext, PanierActivity::class.java)
+                startActivity(intent)
+            }
         }
+
+
     }
 }

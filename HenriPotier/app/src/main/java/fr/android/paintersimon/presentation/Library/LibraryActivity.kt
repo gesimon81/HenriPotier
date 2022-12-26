@@ -25,17 +25,16 @@ class LibraryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_library)
 
-        println("timber start ")
-
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-
         // This will pass the ArrayList to our Adapter
         var adapter = LibraryAdapter(ArrayList<Book>())
+
+        //TODO : et si il n'y a pas d'accès internet ?
 
         // This will trigger when a book is clicked
         val packageContext = this;
@@ -43,9 +42,7 @@ class LibraryActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 println("test")
                 val intent = Intent(packageContext, DetailActivity::class.java)
-                intent.putExtra("title", adapter.getBookTitle(position))
-                intent.putExtra("price", adapter.getBookPrice(position))
-                intent.putExtra("cover", adapter.getBookCover(position))
+                intent.putExtra("book", viewModel.state.value?.books?.get(position))
                 startActivity(intent)
             }
         })
