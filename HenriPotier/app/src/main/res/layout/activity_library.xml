@@ -16,6 +16,14 @@
      TODO : ajouter un label en haut de la page "Library" pour savoir où on est
  -->
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:text="LIBRARY" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
@@ -23,10 +31,7 @@
         tools:itemCount="5"
         tools:listitem="@layout/card_view_design" />
 
-    <!--
-        TODO : ajouter le bouton pour consulter le panier
-        J'imagine qqch dans le style d'Amazon : https://www.amazon.fr/alm/storefront?almBrandId=TW9ub3ByaXg&ref_=nav_cs_monop
-    -->
+
 
     <!--
         TODO : utiliser les fragments pour gérer deux affichage différents : portrait et landscape

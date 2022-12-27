@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.android.paintersimon.data.MyRetrofit
 import fr.android.paintersimon.domain.HenriPotierService
+import fr.android.paintersimon.domain.SousPanier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.LinkedList
 
 
 class PanierViewModel : ViewModel() {
@@ -15,7 +17,7 @@ class PanierViewModel : ViewModel() {
     val state = MutableLiveData<PanierState>()
     fun loadBooks() {
         //state at application start
-        state.postValue(PanierState(emptyList(), true))
+        state.postValue(PanierState(LinkedList<SousPanier>(), true))
 
         //aync request to update state
         viewModelScope.launch(context = Dispatchers.Main) {

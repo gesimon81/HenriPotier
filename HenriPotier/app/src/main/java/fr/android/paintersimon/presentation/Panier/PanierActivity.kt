@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
+import fr.android.paintersimon.domain.SousPanier
+import java.util.LinkedList
 
 
 data class PanierState(
-    val panier: MutableMap<Book, Int> = HashMap<Book, Int>(),
+    val panier: MutableList<SousPanier> = LinkedList<SousPanier>(),
     val isLoading: Boolean
 )
 
@@ -33,7 +35,7 @@ class PanierActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // This will pass the ArrayList to our Adapter
-        var adapter = PanierAdapter(HashMap<Book, Int>())
+        var adapter = PanierAdapter(LinkedList<SousPanier>())
 
         //TODO : et si il n'y a pas d'accès internet ?
 

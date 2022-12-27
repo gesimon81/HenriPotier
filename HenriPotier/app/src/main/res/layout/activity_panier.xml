@@ -12,11 +12,13 @@
     android:orientation="vertical"
     tools:context=".presentation.Panier.PanierActivity">
 
-    <!-- TODO : ajouter un ou des composants pour afficher le panier -->
-
-    <!--
-  TODO : ajouter un label en haut de la page "Library" pour savoir où on est
-    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:text="PANIER" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -24,6 +26,9 @@
         android:layout_height="match_parent"
         tools:itemCount="5"
         tools:listitem="@layout/card_view_design_panier" />
+
+    <!-- TODO ajouter textField pour afficher le prix de la meilleur offre -->
+    <!-- TODO ajouter bouton pour commander -->
 
 </LinearLayout>
 
