@@ -14,7 +14,7 @@ class MyRetrofit {
 
     companion object {
         private var instance: Retrofit? = null
-        private var panier: MutableList<Book>  =  LinkedList()
+        private var panier: MutableMap<Book, Int>  =  HashMap()
 
         fun getRetrofitInstance(): Retrofit? {
             if (instance == null) {
@@ -30,14 +30,18 @@ class MyRetrofit {
             return instance
         }
 
-        fun getPanier():MutableList<Book>{
+        fun getPanier():MutableMap<Book, Int>{
             return panier
+        }
+
+        fun addSousPanier(book: Book){
+            //TODO : ajouter le livre au sous panier
+            // pas de clef -> ajout nouvelle clef avec nbExemplaire = 1
+            // clef présente -> nbExamplaire++
         }
 
         fun createHenriPotierService(): HenriPotierService? {
             return  getRetrofitInstance()?.create(HenriPotierService::class.java);
         }
     }
-
-
 }

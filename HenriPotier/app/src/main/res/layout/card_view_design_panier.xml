@@ -29,6 +29,9 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <!--
+        TODO : ajouter un compteur qui gère le nb d'exemplaire du livre
+    -->
 
     </LinearLayout>
 

@@ -12,6 +12,10 @@
     android:orientation="vertical"
     tools:context=".presentation.Detail.DetailActivity">
 
+    <!--
+      TODO : ajouter un label en haut de la page "Library" pour savoir où on est
+  -->
+
 
     <!-- TODO : rendre tout ça plus joli -->
 

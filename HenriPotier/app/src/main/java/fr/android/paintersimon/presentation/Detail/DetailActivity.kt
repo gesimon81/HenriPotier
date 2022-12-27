@@ -9,9 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import fr.android.paintersimon.R
+import fr.android.paintersimon.data.MyRetrofit
 import fr.android.paintersimon.data.MyRetrofit.Companion.getPanier
+import fr.android.paintersimon.data.MyRetrofit.Companion.getRetrofitInstance
 import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.presentation.Panier.PanierActivity
+import retrofit2.Retrofit
 
 
 class DetailActivity : AppCompatActivity() {
@@ -43,12 +46,11 @@ class DetailActivity : AppCompatActivity() {
             var panier = getPanier()
             val addPanierButton  = findViewById<Button>(R.id.addPanierButton)
             addPanierButton.setOnClickListener {
-                panier.add(book)
+                MyRetrofit.addSousPanier(book)
                 //TODO : add toast "Livre ajouté au panier"
                 println(panier.size)
             }
 
-            //TODO configurer le bouton consulter panier
             val showPanierButton  = findViewById<Button>(R.id.showPanierButton)
             showPanierButton.setOnClickListener {
                 val intent = Intent(packageContext, PanierActivity::class.java)
