@@ -25,6 +25,9 @@ class LibraryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_library)
 
+        //TODO: récupérer l'orientation et inflate le bon layout (fragments)
+        // https://github.com/codepath/android_guides/wiki/Creating-and-Using-Fragments
+
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
@@ -56,7 +59,11 @@ class LibraryActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
+        //TODO : sauvegarder le state pour ne pas le recharger
+        // https://www.youtube.com/watch?v=yhwtcEnI2Bg
+
         viewModel.loadBooks();
+        println("viewModel.loadBooks()")
 
 
     }

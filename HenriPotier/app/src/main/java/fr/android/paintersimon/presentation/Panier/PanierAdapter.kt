@@ -33,7 +33,6 @@ class PanierAdapter(private var mList: List<SousPanier>) : RecyclerView.Adapter<
         // sets the text to the textview from our itemHolder class
         holder.textView.text = mList.get(position).book.title
         Picasso.get().load(mList.get(position).book.cover).into(holder.imageView);
-        //TODO afficher le nb d'examplaires
         holder.quantityTextView.text = "Quantity: "+mList.get(position).quantity.toString()
     }
 

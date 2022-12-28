@@ -12,9 +12,7 @@
     android:orientation="vertical"
     tools:context=".presentation.Library.LibraryActivity">
 
-    <!--
-     TODO : ajouter un label en haut de la page "Library" pour savoir où on est
- -->
+
 
     <TextView
         android:layout_width="match_parent"

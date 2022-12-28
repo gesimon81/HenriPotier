@@ -36,9 +36,6 @@ class MyRetrofit {
         }
 
         fun addSousPanier(book: Book){
-            //TODO : ajouter le livre au sous panier
-            // pas de clef -> ajout nouvelle clef avec nbExemplaire = 1
-            // clef présente -> nbExamplaire++
             var found : Boolean = false
             panier.forEach { sp ->
                 run {
@@ -54,6 +51,7 @@ class MyRetrofit {
         }
 
         fun createHenriPotierService(): HenriPotierService? {
+            println("createHenriPotierService")
             return  getRetrofitInstance()?.create(HenriPotierService::class.java);
         }
     }
