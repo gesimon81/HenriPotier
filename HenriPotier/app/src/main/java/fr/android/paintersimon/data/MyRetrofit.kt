@@ -16,6 +16,7 @@ class MyRetrofit {
     companion object {
         private var instance: Retrofit? = null
         private var panier: LinkedList<SousPanier>  =  LinkedList()
+        private var service: HenriPotierService? = null
 
         fun getRetrofitInstance(): Retrofit? {
             if (instance == null) {
@@ -53,6 +54,15 @@ class MyRetrofit {
         fun createHenriPotierService(): HenriPotierService? {
             println("createHenriPotierService")
             return  getRetrofitInstance()?.create(HenriPotierService::class.java);
+        }
+
+        fun getHenriPotierService(): HenriPotierService? {
+            if(service != null){
+                return service
+            }else{
+                service = createHenriPotierService()
+                return service
+            }
         }
     }
 }
