@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.android.paintersimon.data.MyRetrofit
+import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.domain.HenriPotierService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,19 +13,31 @@ import kotlinx.coroutines.withContext
 
 class LibraryViewModel : ViewModel() {
 
-    val state = MutableLiveData<LibraryState>()
-    fun loadBooks() {
-        //create service
-        val service: HenriPotierService? = MyRetrofit.createHenriPotierService()
+    private val state = MutableLiveData<LibraryState>()
+    fun initState() {
+        println("viewModel.initState")
 
-        //state at application start
-        state.postValue(LibraryState(emptyList(), true))
+        //create service
+        val service: HenriPotierService? = MyRetrofit.getHenriPotierService()
 
         //aync request to update state
         viewModelScope.launch(context = Dispatchers.Main) {
             val books = withContext(Dispatchers.IO) {
                 service?.listBooks()
             }
+            state.postValue(books?.let { LibraryState(it, false) })
+        }
+    }
+
+    fun getState(): MutableLiveData<LibraryState> {
+        return state
+    }
+
+    fun setBooks(books:List<Book>){
+        println("viewModel.setBooks")
+        val service: HenriPotierService? = MyRetrofit.getHenriPotierService()
+        //aync request to update state
+        viewModelScope.launch(context = Dispatchers.Main) {
             state.postValue(books?.let { LibraryState(it, false) })
         }
     }
