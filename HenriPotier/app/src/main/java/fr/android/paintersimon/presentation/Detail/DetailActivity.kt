@@ -41,6 +41,9 @@ class DetailActivity : AppCompatActivity() {
             val coverImageView = findViewById<ImageView>(R.id.coverImageView)
             Picasso.get().load(book.cover).into(coverImageView);
 
+            val synospsisTextView = findViewById<TextView>(R.id.synopsisTextView)
+            synospsisTextView.setText(book.synopsis.joinToString(""))
+
             val packageContext = this
 
             var panier = getPanier()
