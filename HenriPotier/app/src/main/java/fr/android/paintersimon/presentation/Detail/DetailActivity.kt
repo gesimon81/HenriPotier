@@ -50,8 +50,14 @@ class DetailActivity : AppCompatActivity() {
             val addPanierButton  = findViewById<Button>(R.id.addPanierButton)
             addPanierButton.setOnClickListener {
                 MyRetrofit.addSousPanier(book)
-                //TODO : add toast "Livre ajouté au panier"
+
                 println(panier.size)
+
+                //add toast "Livre ajouté au panier"
+                val text = "Livre ajouté au panier"
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
             }
 
 
