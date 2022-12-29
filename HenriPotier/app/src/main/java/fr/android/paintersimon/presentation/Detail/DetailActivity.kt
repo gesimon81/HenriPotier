@@ -1,10 +1,13 @@
 package fr.android.paintersimon.presentation.Detail
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
+import fr.android.paintersimon.presentation.Library.LibraryActivity
 
 
 class DetailActivity : AppCompatActivity() {
@@ -18,10 +21,19 @@ class DetailActivity : AppCompatActivity() {
 
         val packageContext = this
 
-        val intent = getIntent();
+        var intent = getIntent();
         val book: Book? = intent.getParcelableExtra<Book>("book")
+        //val book: Book? = null //keep for test book null
         if (book == null){
-            //TODO : handle null book
+            //TODO : vérifier si opération inutile
+            //affichage toast
+            val text = "Aucun détail disponible"
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+
+            intent = Intent(packageContext, LibraryActivity::class.java)
+            startActivity(intent)
         }else{
 
             val ft: FragmentTransaction = supportFragmentManager.beginTransaction()

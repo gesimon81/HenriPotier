@@ -50,13 +50,6 @@ class LibraryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //bouton pour retourner sur la liste
-        val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
-        showListBooksButton.setOnClickListener {
-            val intent = Intent(packageContext, LibraryActivity::class.java)
-            startActivity(intent)
-        }
-
 
         //TODO : sauvegarder le state pour ne pas le recharger
         // https://www.youtube.com/watch?v=yhwtcEnI2Bg
