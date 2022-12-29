@@ -2,6 +2,7 @@ package fr.android.paintersimon.presentation.Library
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.google.gson.reflect.TypeToken
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.presentation.Detail.DetailActivity
+import fr.android.paintersimon.presentation.Panier.PanierActivity
 import java.lang.reflect.Type
 
 
@@ -62,6 +64,22 @@ class LibraryActivity : AppCompatActivity() {
             adapter.setList(state.books)
             adapter.notifyDataSetChanged()
         }
+
+
+        //bouton pour consulter le panier
+        val showPanierButton  = findViewById<ImageButton>(R.id.showPanierButton)
+        showPanierButton.setOnClickListener {
+            val intent = Intent(packageContext, PanierActivity::class.java)
+            startActivity(intent)
+        }
+
+        //bouton pour retourner sur la liste
+        val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
+        showListBooksButton.setOnClickListener {
+            val intent = Intent(packageContext, LibraryActivity::class.java)
+            startActivity(intent)
+        }
+
 
         //TODO : sauvegarder le state pour ne pas le recharger
         // https://www.youtube.com/watch?v=yhwtcEnI2Bg
