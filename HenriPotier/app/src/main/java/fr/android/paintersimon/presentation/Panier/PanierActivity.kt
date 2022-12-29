@@ -56,13 +56,6 @@ class PanierActivity : AppCompatActivity() {
 
         val packageContext = this
 
-        //bouton pour consulter le panier
-        val showPanierButton  = findViewById<ImageButton>(R.id.showPanierButton)
-        showPanierButton.setOnClickListener {
-            val intent = Intent(packageContext, PanierActivity::class.java)
-            startActivity(intent)
-        }
-
         //bouton pour retourner sur la liste
         val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
         showListBooksButton.setOnClickListener {
