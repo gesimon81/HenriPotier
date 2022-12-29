@@ -6,32 +6,21 @@
 
 
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="352dp"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.Library.LibraryActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".presentation.Library.LibraryActivity">
+        tools:itemCount="5"
+        tools:listitem="@layout/card_view_design" />
 
-        <TextView
-            android:layout_width="410dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="LIBRARY"
-            android:textAlignment="center"
-            android:textSize="30sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="412dp"
-            android:layout_height="match_parent"
-            tools:itemCount="5"
-            tools:listitem="@layout/card_view_design" />
-
-        <!--
-            TODO : utiliser les fragments pour gérer deux affichage différents : portrait et landscape
-            tuto fragment : https://www.youtube.com/watch?v=7MMs_lBQVcc
-        -->
-
-    </LinearLayout>
+</LinearLayout>

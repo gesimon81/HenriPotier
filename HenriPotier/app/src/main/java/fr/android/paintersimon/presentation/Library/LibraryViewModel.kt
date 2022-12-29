@@ -8,6 +8,7 @@ import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.domain.HenriPotierService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 
@@ -19,10 +20,10 @@ class LibraryViewModel : ViewModel() {
 
         //create service
         val service: HenriPotierService? = MyRetrofit.getHenriPotierService()
-
+        var books: List<Book>? = null
         //aync request to update state
-        viewModelScope.launch(context = Dispatchers.Main) {
-            val books = withContext(Dispatchers.IO) {
+        val job = viewModelScope.launch(context = Dispatchers.Main) {
+             books = withContext(Dispatchers.IO) {
                 service?.listBooks()
             }
             state.postValue(books?.let { LibraryState(it, false) })

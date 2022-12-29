@@ -1,21 +1,14 @@
 package fr.android.paintersimon.presentation.Detail
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
+import androidx.fragment.app.FragmentTransaction
 import fr.android.paintersimon.R
-import fr.android.paintersimon.data.MyRetrofit
-import fr.android.paintersimon.data.MyRetrofit.Companion.getPanier
-import fr.android.paintersimon.data.MyRetrofit.Companion.getRetrofitInstance
 import fr.android.paintersimon.domain.Book
-import fr.android.paintersimon.presentation.Library.LibraryActivity
-import fr.android.paintersimon.presentation.Panier.PanierActivity
-import retrofit2.Retrofit
 
 
 class DetailActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,45 +23,18 @@ class DetailActivity : AppCompatActivity() {
         if (book == null){
             //TODO : handle null book
         }else{
-            //peupler les composants du layout avec le détail du livre
 
-            val titleTextVIew = findViewById<TextView>(R.id.titleTextView)
-            titleTextVIew.setText(book.title)
-
-            val priceTextView = findViewById<TextView>(R.id.priceTextView)
-            priceTextView.setText(book.price)
-
-            val coverImageView = findViewById<ImageView>(R.id.coverImageView)
-            Picasso.get().load(book.cover).into(coverImageView);
-
-            val synospsisTextView = findViewById<TextView>(R.id.synopsisTextView)
-            synospsisTextView.setText(book.synopsis.joinToString(""))
-
-
-
-            var panier = getPanier()
-            val addPanierButton  = findViewById<Button>(R.id.addPanierButton)
-            addPanierButton.setOnClickListener {
-                MyRetrofit.addSousPanier(book)
-                //TODO : add toast "Livre ajouté au panier"
-                println(panier.size)
+            val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+            if (savedInstanceState == null)
+            {
+                println("DetailFragment()")
+                var detailFragment = DetailFragment()
+                val bundle = Bundle()
+                bundle.putParcelable("book", book)
+                detailFragment.setArguments(bundle)
+                ft.replace(fr.android.paintersimon.R.id.detail_fragment, detailFragment)
             }
-
-
-        }
-
-        //bouton pour consulter le panier
-        val showPanierButton  = findViewById<ImageButton>(R.id.showPanierButton)
-        showPanierButton.setOnClickListener {
-            val intent = Intent(packageContext, PanierActivity::class.java)
-            startActivity(intent)
-        }
-
-        //bouton pour retourner sur la liste
-        val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
-        showListBooksButton.setOnClickListener {
-            val intent = Intent(packageContext, LibraryActivity::class.java)
-            startActivity(intent)
+            ft.commit()
         }
     }
 }
