@@ -25,10 +25,19 @@ class DetailActivity : AppCompatActivity() {
 
         val packageContext = this
 
-        val intent = getIntent();
+        var intent = getIntent();
         val book: Book? = intent.getParcelableExtra<Book>("book")
+        //val book: Book? = null //keep for test book null
         if (book == null){
-            //TODO : handle null book
+            //TODO : vérifier si opération inutile
+            //affichage toast
+            val text = "Aucun détail disponible"
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+
+            intent = Intent(packageContext, LibraryActivity::class.java)
+            startActivity(intent)
         }else{
             //peupler les composants du layout avec le détail du livre
 
