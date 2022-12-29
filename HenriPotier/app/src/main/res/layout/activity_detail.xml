@@ -20,6 +20,40 @@
 
     <!-- TODO : rendre tout ça plus joli -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="DETAIL"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <!-- <Button
+                    android:id="@+id/showPanierButton"
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:text="Consulter panier" /> -->
+
+        <ImageButton
+            android:id="@+id/showListBooksButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+        <ImageButton
+            android:id="@+id/showPanierButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_set_as" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,33 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="214dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="DETAIL"
-                    android:textAlignment="center"
-                    android:textSize="30sp" />
-
-                <!-- <Button
-                    android:id="@+id/showPanierButton"
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content"
-                    android:text="Consulter panier" /> -->
-
-                <ImageButton
-                    android:id="@+id/showPanierButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_menu_set_as" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
