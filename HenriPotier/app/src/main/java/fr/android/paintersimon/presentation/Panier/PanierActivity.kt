@@ -1,6 +1,8 @@
 package fr.android.paintersimon.presentation.Panier
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.android.paintersimon.R
 import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.domain.SousPanier
+import fr.android.paintersimon.presentation.Library.LibraryActivity
 import java.util.LinkedList
 
 
@@ -50,5 +53,21 @@ class PanierActivity : AppCompatActivity() {
 
         viewModel.loadBooks();
 
+
+        val packageContext = this
+
+        //bouton pour consulter le panier
+        val showPanierButton  = findViewById<ImageButton>(R.id.showPanierButton)
+        showPanierButton.setOnClickListener {
+            val intent = Intent(packageContext, PanierActivity::class.java)
+            startActivity(intent)
+        }
+
+        //bouton pour retourner sur la liste
+        val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
+        showListBooksButton.setOnClickListener {
+            val intent = Intent(packageContext, LibraryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
