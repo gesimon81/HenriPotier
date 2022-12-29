@@ -2,10 +2,7 @@ package fr.android.paintersimon.presentation.Detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import fr.android.paintersimon.R
@@ -54,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
                 println(panier.size)
             }
 
-            val showPanierButton  = findViewById<Button>(R.id.showPanierButton)
+            val showPanierButton  = findViewById<ImageButton>(R.id.showPanierButton)
             showPanierButton.setOnClickListener {
                 val intent = Intent(packageContext, PanierActivity::class.java)
                 startActivity(intent)
