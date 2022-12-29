@@ -4,15 +4,11 @@
     android:layout_height="100dp"
     android:text="Hello !"></TextView> -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".presentation.Library.LibraryActivity">
+
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="352dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -39,11 +35,3 @@
         -->
 
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/detail_fragment"
-        android:layout_width="323dp"
-        android:layout_height="match_parent"></FrameLayout>
-
-
-</LinearLayout>

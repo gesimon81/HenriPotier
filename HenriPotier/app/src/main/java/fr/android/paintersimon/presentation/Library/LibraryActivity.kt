@@ -1,10 +1,11 @@
 package fr.android.paintersimon.presentation.Library
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -63,11 +64,29 @@ class LibraryActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        //TODO : sauvegarder le state pour ne pas le recharger
-        // https://www.youtube.com/watch?v=yhwtcEnI2Bg
-
-
         loadData();
+
+
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            // Begin the transaction
+            // Begin the transaction
+            val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+            // Replace the contents of the container with the new fragment
+            // Replace the contents of the container with the new fragment
+            if (savedInstanceState == null)
+            {
+                ft.replace(fr.android.paintersimon.R.id.detail_fragment, DetailFragment())
+            }
+            // or ft.add(R.id.your_placeholder, new FooFragment());
+            // Complete the changes added above
+            // or ft.add(R.id.your_placeholder, new FooFragment());
+            // Complete the changes added above
+            ft.commit()
+        }
+
+
         println("LibraryActivity")
 
     }
