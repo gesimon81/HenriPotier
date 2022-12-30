@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import fr.android.paintersimon.R
@@ -48,6 +45,7 @@ class DetailFragment() : Fragment() {
 
         //bouton pour consulter le panier
         getView()?.findViewById<ImageButton>(R.id.showPanierButton)?.setOnClickListener {
+            println("DetailFragment bouton showPanierButton clické")
             val intent = Intent(context, PanierActivity::class.java)
             startActivity(intent)
         }
@@ -74,8 +72,15 @@ class DetailFragment() : Fragment() {
         getView()?.findViewById<Button>(R.id.addPanierButton)?.setOnClickListener {
             if (book != null) {
                 MyRetrofit.addSousPanier(book)
+
+                //TODO : add toast "Livre ajouté au panier"
+                //add toast "Livre ajouté au panier"
+                /*val text = "Livre ajouté au panier"
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration) //TODO comment transmettre l'applicationContext depuis DetailActivity.kt ?
+                toast.show()*/
             }
-            //TODO : add toast "Livre ajouté au panier"
+            
             println(panier.size)
         }
     }

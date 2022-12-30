@@ -49,5 +49,7 @@ class DetailActivity : AppCompatActivity() {
             ft.commit()
         }
         //TODO : les boutons library et panier ne fonctionnent pas
+
+
     }
 }
