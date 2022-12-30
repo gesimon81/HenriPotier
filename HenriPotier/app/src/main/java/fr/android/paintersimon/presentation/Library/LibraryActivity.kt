@@ -28,18 +28,17 @@ class LibraryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_library)
         println("LibraryActivity.onCreate()")
 
-        val orientation = resources.configuration.orientation
-        println("orientation: "+orientation)
 
+        //Créer les fragments
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         val libraryFragment = LibraryFragment()
         ft.replace(fr.android.paintersimon.R.id.library_fragment, libraryFragment)
         detailFragment = DetailFragment()
         ft.replace(fr.android.paintersimon.R.id.detail_fragment, detailFragment)
 
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            ft.hide(detailFragment)
-        }
+        val orientation = resources.configuration.orientation
+        println("orientation: "+orientation)
+        ft.hide(detailFragment)
         ft.commit()
 
         //bouton pour consulter le panier
@@ -51,10 +50,6 @@ class LibraryActivity : AppCompatActivity() {
         }
 
 
-        //TODO : sauvegarder le state pour ne pas le recharger
-        // https://www.youtube.com/watch?v=yhwtcEnI2Bg
-
-
         println("LibraryActivity")
 
     }
@@ -62,6 +57,13 @@ class LibraryActivity : AppCompatActivity() {
     fun setDetailBook(book: Book?) {
         if (book != null && detailFragment != null) {
             detailFragment.setBook(book)
+            val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+            val orientation = resources.configuration.orientation
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                println("show detail fragment")
+                ft.show(detailFragment)
+            }
+            ft.commit()
         }
     }
 }
