@@ -2,6 +2,7 @@ package fr.android.paintersimon.presentation.Panier
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -61,6 +62,12 @@ class PanierActivity : AppCompatActivity() {
         showListBooksButton.setOnClickListener {
             val intent = Intent(packageContext, LibraryActivity::class.java)
             startActivity(intent)
+        }
+
+        //TODO bouton pour vider le panier
+        val clearPanierButton  = findViewById<Button>(R.id.buttonBuy)
+        clearPanierButton.setOnClickListener {
+            //viewModel.state.
         }
     }
 }

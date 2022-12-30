@@ -51,6 +51,10 @@ class MyRetrofit {
             }
         }
 
+        fun clearPanier() {
+            panier.clear()
+        }
+
         fun createHenriPotierService(): HenriPotierService? {
             println("createHenriPotierService")
             return  getRetrofitInstance()?.create(HenriPotierService::class.java);

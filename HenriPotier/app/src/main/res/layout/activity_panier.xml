@@ -42,12 +42,38 @@
             app:srcCompat="@android:drawable/ic_menu_set_as" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:itemCount="5"
-        tools:listitem="@layout/card_view_design_panier" />
+        android:orientation="horizontal">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/card_view_design_panier" >
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/buttonBuy"
+                    android:layout_width="401dp"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmer l'achat" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
     <!-- TODO ajouter textField pour afficher le prix de la meilleur offre -->
     <!-- TODO ajouter bouton pour commander -->
