@@ -56,6 +56,8 @@ class PanierActivity : AppCompatActivity() {
 
         val packageContext = this
 
+        //TODO : cacher le bouton si le panier est vide
+
         //bouton pour retourner sur la liste
         val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
         showListBooksButton.setOnClickListener {
