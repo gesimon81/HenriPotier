@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.android.paintersimon.R
+import fr.android.paintersimon.data.MyRetrofit
 import fr.android.paintersimon.domain.Book
 import fr.android.paintersimon.domain.SousPanier
 import fr.android.paintersimon.presentation.Library.LibraryActivity
@@ -16,7 +17,7 @@ import java.util.LinkedList
 
 
 data class PanierState(
-    val panier: MutableList<SousPanier> = LinkedList<SousPanier>(),
+    var panier: MutableList<SousPanier> = LinkedList<SousPanier>(),
     val isLoading: Boolean
 )
 
@@ -30,7 +31,6 @@ class PanierActivity : AppCompatActivity() {
         setContentView(R.layout.activity_panier)
 
         println("timber start PanierActivity")
-
 
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
@@ -54,7 +54,6 @@ class PanierActivity : AppCompatActivity() {
 
         viewModel.loadBooks();
 
-
         val packageContext = this
 
         //bouton pour retourner sur la liste
@@ -64,10 +63,11 @@ class PanierActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //TODO bouton pour vider le panier
         val clearPanierButton  = findViewById<Button>(R.id.buttonBuy)
         clearPanierButton.setOnClickListener {
-            //viewModel.state.
+            MyRetrofit.clearPanier()
+            viewModel.state.value?.panier = LinkedList<SousPanier>()
+            adapter.notifyDataSetChanged()
         }
     }
 }
