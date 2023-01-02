@@ -43,18 +43,9 @@ class DetailFragment() : Fragment() {
             setBook(book);
         }
 
-        //bouton pour consulter le panier
-        getView()?.findViewById<ImageButton>(R.id.showPanierButton)?.setOnClickListener {
-            println("DetailFragment bouton showPanierButton clické")
-            val intent = Intent(context, PanierActivity::class.java)
-            startActivity(intent)
-        }
 
-        //bouton pour retourner sur la liste
-        getView()?.findViewById<ImageButton>(R.id.showListBooksButton)?.setOnClickListener {
-            val intent = Intent(this.context, LibraryActivity::class.java)
-            startActivity(intent)
-        }
+
+
 
         println("DetailFragment onViewCreated")
     }
