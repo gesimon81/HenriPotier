@@ -65,6 +65,7 @@ class PanierActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //TODO : ajouter toast de confirmation
         val clearPanierButton  = findViewById<Button>(R.id.buttonBuy)
         clearPanierButton.setOnClickListener {
             MyRetrofit.clearPanier()

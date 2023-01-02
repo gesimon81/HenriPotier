@@ -33,6 +33,9 @@ android {
 
 dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
     testImplementation "junit:junit:$versions.junit_version"
     // for adding recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
