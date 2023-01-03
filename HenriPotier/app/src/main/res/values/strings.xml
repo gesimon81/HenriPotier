@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Library</string>
     <string name="action_settings">Settings</string>
-    <string name="library_page_name">LIBRARY</string>
+    <string name="page_name_library">LIBRARY</string>
+    <string name="page_name_panier">PANIER</string>
+    <string name="page_name_detail">DETAIL</string>
+    <string name="panier_button_confirm">Confirmer l\'achat</string>
 </resources>

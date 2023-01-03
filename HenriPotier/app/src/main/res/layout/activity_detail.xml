@@ -29,7 +29,7 @@
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="DETAIL"
+            android:text="@string/page_name_detail"
             android:textAlignment="center"
             android:textSize="30sp" />
 
