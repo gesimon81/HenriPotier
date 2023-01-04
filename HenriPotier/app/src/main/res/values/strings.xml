@@ -5,4 +5,5 @@
     <string name="page_name_panier">PANIER</string>
     <string name="page_name_detail">DETAIL</string>
     <string name="panier_button_confirm">Confirmer l\'achat</string>
+    <string name="panier_button_clear">Vider le panier</string>
 </resources>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:text="Hello !"></TextView> -->
-
+<!-- TODO layoutScroll pour paysage -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -67,9 +67,15 @@
 
                 <Button
                     android:id="@+id/buttonBuy"
-                    android:layout_width="401dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/panier_button_confirm" />
+
+                <Button
+                    android:id="@+id/buttonClear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/panier_button_clear" />
             </LinearLayout>
         </ScrollView>
 

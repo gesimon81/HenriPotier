@@ -57,7 +57,7 @@ class PanierActivity : AppCompatActivity() {
 
         val packageContext = this
 
-        //TODO : cacher le bouton si le panier est vide
+        //TODO : désactiver les boutons si le panier est vide
 
         //bouton pour retourner sur la liste
         val showListBooksButton  = findViewById<ImageButton>(R.id.showListBooksButton)
@@ -66,19 +66,29 @@ class PanierActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //TODO : ajouter toast de confirmation
-        val clearPanierButton  = findViewById<Button>(R.id.buttonBuy)
+        val clearPanierButton  = findViewById<Button>(R.id.buttonClear)
         clearPanierButton.setOnClickListener {
-            MyRetrofit.clearPanier()
-            viewModel.state.value?.panier = LinkedList<SousPanier>()
-
-            //affichage toast
-            val text = "Votre commande a été enregistré et le panier a été vidé"
-            val duration = Toast.LENGTH_LONG
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show()
-
-            adapter.notifyDataSetChanged()
+            val text = "Le panier a été vidé"
+            clearPanier(text, adapter)
         }
+
+        val buyPanierButton  = findViewById<Button>(R.id.buttonBuy)
+        buyPanierButton.setOnClickListener {
+            val text = "Votre commande a été enregistré et le panier a été vidé"
+            clearPanier(text, adapter)
+        }
+    }
+
+    fun clearPanier(text: String, adapter: PanierAdapter) {
+        MyRetrofit.clearPanier()
+        viewModel.state.value?.panier = LinkedList<SousPanier>()
+
+        //affichage toast
+
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(applicationContext, text, duration)
+        toast.show()
+
+        adapter.notifyDataSetChanged()
     }
 }
