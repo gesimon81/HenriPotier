@@ -51,7 +51,7 @@
         <FrameLayout
             android:id="@+id/library_fragment"
             android:layout_width="398dp"
-            android:layout_height="672dp"></FrameLayout>
+            android:layout_height="match_parent"></FrameLayout>
 
         <FrameLayout
             android:id="@+id/detail_fragment"
