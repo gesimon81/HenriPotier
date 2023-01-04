@@ -1,6 +1,14 @@
-package fr.android.paintersimon.main.domain.commercialOffer
+package fr.android.paintersimon.domain
 
-abstract class Offer() {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-    abstract fun calculate(montant:Double):Double
-}
+data class Offers(
+    val offers: List<Offer>
+)
+
+data class Offer(
+    val type: String,
+    val value: Int,
+    val sliceValue: Int? = null
+)

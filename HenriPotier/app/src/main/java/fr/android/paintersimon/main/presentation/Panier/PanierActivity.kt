@@ -7,13 +7,19 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.android.paintersimon.R
 import fr.android.paintersimon.data.MyRetrofit
 import fr.android.paintersimon.domain.Book
+import fr.android.paintersimon.domain.Offers
 import fr.android.paintersimon.domain.SousPanier
 import fr.android.paintersimon.presentation.Library.LibraryActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.LinkedList
 
 
@@ -77,7 +83,14 @@ class PanierActivity : AppCompatActivity() {
             val text = "Votre commande a été enregistré et le panier a été vidé"
             clearPanier(text, adapter)
         }
+
+        CoroutineScope(Dispatchers.Main).launch { withContext(Dispatchers.IO) {
+            println(getBestOffer())
+        } }
+
     }
+
+
 
     fun clearPanier(text: String, adapter: PanierAdapter) {
         MyRetrofit.clearPanier()
@@ -90,5 +103,15 @@ class PanierActivity : AppCompatActivity() {
         toast.show()
 
         adapter.notifyDataSetChanged()
+    }
+
+    suspend fun getBestOffer(): Offers? {
+        // Use a different CoroutineScope, etc
+        //TODO: construire la chaîne des isbn
+        //TODO offers =
+            return MyRetrofit.getHenriPotierService()?.getCommercialOffer("a460afed-e5e7-4e39-a39d-c885c05db861,a460afed-e5e7-4e39-a39d-c885c05db861")
+
+        //TODO: appeler CommercialOfferUtils.getBest(offers)
+        //TODO : set un textField
     }
 }

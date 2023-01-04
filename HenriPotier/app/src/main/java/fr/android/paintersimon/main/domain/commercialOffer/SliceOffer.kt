@@ -1,6 +1,6 @@
 package fr.android.paintersimon.main.domain.commercialOffer
 
-class SliceOffer() : Offer() {
+class SliceOffer() {
     private var value: Double = 0.0
     private var sliceValue: Double  = 0.0
 
@@ -9,7 +9,7 @@ class SliceOffer() : Offer() {
         this.sliceValue = sliceValuep
     }
 
-    override fun calculate(montant:Double): Double {
+     fun calculate(montant:Double): Double {
         val numberOfSlices: Int = (montant/sliceValue).toInt()
         return montant-value*numberOfSlices
     }

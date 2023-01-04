@@ -1,5 +1,6 @@
 package fr.android.paintersimon.test
 
+import fr.android.paintersimon.domain.Offer
 import fr.android.paintersimon.main.domain.commercialOffer.*
 import junit.framework.Assert.assertEquals
 import org.junit.Test
@@ -14,13 +15,9 @@ class MeilleureOffreTest {
             //GIVEN
             val montantAchat:Double = 110.0
             var offers : LinkedList<Offer> = LinkedList<Offer>()
-            val percentageOffer: PercentageOffer = PercentageOffer(1.0)
-            println(percentageOffer.calculate(montantAchat))
-            val sliceOffer: SliceOffer = SliceOffer(10.0,100.0)
-            println(sliceOffer.calculate(montantAchat))
-
-            val minusOffer: MinusOffer = MinusOffer(15.0)
-            println(minusOffer.calculate(montantAchat))
+            val percentageOffer: Offer = Offer("percentage",1)
+            val sliceOffer: Offer = Offer("slice",10,100)
+            val minusOffer: Offer = Offer("minus",15)
 
             offers.add(percentageOffer)
             offers.add(minusOffer)
