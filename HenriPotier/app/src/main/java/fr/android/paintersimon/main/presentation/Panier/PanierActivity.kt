@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,6 +71,13 @@ class PanierActivity : AppCompatActivity() {
         clearPanierButton.setOnClickListener {
             MyRetrofit.clearPanier()
             viewModel.state.value?.panier = LinkedList<SousPanier>()
+
+            //affichage toast
+            val text = "Votre commande a été enregistré et le panier a été vidé"
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+
             adapter.notifyDataSetChanged()
         }
     }
