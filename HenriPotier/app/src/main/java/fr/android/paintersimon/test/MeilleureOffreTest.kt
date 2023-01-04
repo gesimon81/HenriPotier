@@ -1,29 +1,30 @@
 package fr.android.paintersimon.test
 
-import fr.android.paintersimon.main.domain.PercentageOffer
+import fr.android.paintersimon.main.domain.commercialOffer.*
 import junit.framework.Assert.assertEquals
 import org.junit.Test
+import java.util.LinkedList
 
 class MeilleureOffreTest {
 
         //TODO tests
 
         @Test
-        fun percentageOffer_is_the_best() {
+        fun minusOffer_is_best() {
             //GIVEN
-            //montantAchat
-            //percentageOffer(value)
-            //minusOffer(value)
-            //sliceOffer(sliceValue, value)
-            val montantAchat:Int = 110
-            val percentageOffer: PercentageOffer = PercentageOffer(10)
+            val montantAchat:Double = 110.0
+            var offers : LinkedList<Offer> = LinkedList<Offer>()
+            val percentageOffer: PercentageOffer = PercentageOffer(1.0)
+            val sliceOffer: SliceOffer = SliceOffer(10.0,100.0)
+            val minusOffer: MinusOffer = MinusOffer(15.0)
+            offers.add(percentageOffer)
+            offers.add(minusOffer)
+            offers.add(sliceOffer)
 
             //WHEN
-            //appel à l'algo de calcul de la meilleure offre
-            //retourne la meilleure offre
+            val bestOffer: Offer? = commercialOfferUtils.getBest(montantAchat,offers)
 
             //THEN
-            // expected = meilleure offre
-            assertEquals(true, true)
+            assertEquals(minusOffer,bestOffer)
         }
 }
