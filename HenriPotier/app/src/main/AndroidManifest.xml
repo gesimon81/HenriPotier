@@ -23,12 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="main.presentation.Detail.DetailActivity"
+            android:name=".presentation.Detail.DetailActivity"
             android:label="Detail"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="main.presentation.Panier.PanierActivity"
+            android:name=".presentation.Panier.PanierActivity"
             android:label="Panier"
             android:theme="@style/AppTheme">
         </activity>

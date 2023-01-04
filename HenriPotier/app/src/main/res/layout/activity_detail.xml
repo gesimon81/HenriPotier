@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="main.presentation.Detail.DetailActivity">
+    tools:context=".presentation.Detail.DetailActivity">
 
     <!-- TODO : rendre tout ça plus joli -->
 
