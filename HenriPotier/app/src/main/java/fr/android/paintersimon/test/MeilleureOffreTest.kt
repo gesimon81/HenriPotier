@@ -15,8 +15,13 @@ class MeilleureOffreTest {
             val montantAchat:Double = 110.0
             var offers : LinkedList<Offer> = LinkedList<Offer>()
             val percentageOffer: PercentageOffer = PercentageOffer(1.0)
+            println(percentageOffer.calculate(montantAchat))
             val sliceOffer: SliceOffer = SliceOffer(10.0,100.0)
+            println(sliceOffer.calculate(montantAchat))
+
             val minusOffer: MinusOffer = MinusOffer(15.0)
+            println(minusOffer.calculate(montantAchat))
+
             offers.add(percentageOffer)
             offers.add(minusOffer)
             offers.add(sliceOffer)

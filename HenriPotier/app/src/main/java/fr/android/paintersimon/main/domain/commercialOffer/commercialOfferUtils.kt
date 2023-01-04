@@ -10,9 +10,11 @@ class commercialOfferUtils {
 
             offers.forEach { e->
                 run {
-                    if (bestOffer == null || bestOffer!!.calculate(montant) < bestReduction) {
+                    val currentReduction = e!!.calculate(montant)
+                    if (bestOffer == null || currentReduction < bestReduction) {
                         bestOffer = e
                     }
+                    bestReduction = currentReduction
                 }
             }
             return bestOffer

@@ -49,7 +49,6 @@ class LibraryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         println("LibraryActivity")
 
     }
