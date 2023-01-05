@@ -60,16 +60,15 @@ class DetailFragment() : Fragment() {
         getView()?.findViewById<TextView>(R.id.synopsisTextView)?.text = book.synopsis.joinToString("")
 
         var panier = MyRetrofit.getPanier()
+        val context = getContext()
         getView()?.findViewById<Button>(R.id.addPanierButton)?.setOnClickListener {
             if (book != null) {
                 MyRetrofit.addSousPanier(book)
-
-                //TODO : add toast "Livre ajouté au panier"
                 //add toast "Livre ajouté au panier"
-                /*val text = "Livre ajouté au panier"
+                val text = "Livre ajouté au panier"
                 val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(applicationContext, text, duration) //TODO comment transmettre l'applicationContext depuis DetailActivity.kt ?
-                toast.show()*/
+                val toast = Toast.makeText(context, text, duration)
+                toast.show()
             }
             
             println(panier.size)

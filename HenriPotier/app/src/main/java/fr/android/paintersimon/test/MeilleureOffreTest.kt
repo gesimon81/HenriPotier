@@ -7,9 +7,6 @@ import org.junit.Test
 import java.util.LinkedList
 
 class MeilleureOffreTest {
-
-        //TODO tests
-
         @Test
         fun minusOffer_is_best() {
             //GIVEN
@@ -24,7 +21,7 @@ class MeilleureOffreTest {
             offers.add(sliceOffer)
 
             //WHEN
-            val bestOffer: Offer? = commercialOfferUtils.getBest(montantAchat,offers)
+            val bestOffer: Offer? = CommercialOfferUtils.getBestOffer(montantAchat,offers)
 
             //THEN
             assertEquals(minusOffer,bestOffer)

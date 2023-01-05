@@ -7,7 +7,6 @@ interface HenriPotierService {
     @GET("/books")
     suspend fun listBooks(): List<Book>
 
-    //TODO GET commercialOffer
     @GET("/books/{isbns}/commercialOffers")
     suspend fun getCommercialOffer(@Path("isbns") isbns: String):Offers
 }

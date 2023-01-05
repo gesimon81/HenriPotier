@@ -64,7 +64,12 @@
                         tools:listitem="@layout/card_view_design_panier" >
 
                     </androidx.recyclerview.widget.RecyclerView>
-
+                    <TextView
+                        android:id="@+id/TextViewBestOffer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="BestOffer"
+                        />
                     <Button
                         android:id="@+id/buttonBuy"
                         android:layout_width="match_parent"
@@ -76,14 +81,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/panier_button_clear" />
+
+
                 </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-
-    <!-- TODO ajouter textField pour afficher le prix de la meilleur offre -->
-    <!-- TODO ajouter bouton pour commander -->
-
 </LinearLayout>
 
