@@ -39,7 +39,7 @@ class PanierActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panier)
 
-        println("timber start PanierActivity")
+        println("timber start PanierActivity") //todo a suppr ?
 
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
@@ -67,9 +67,7 @@ class PanierActivity : AppCompatActivity() {
         viewModel.loadPanier();
 
         val packageContext = this
-
-        //TODO : désactiver les boutons si le panier est vide
-
+        
         //bouton pour retourner sur la liste
         val showListBooksButton = findViewById<ImageButton>(R.id.showListBooksButton)
         showListBooksButton.setOnClickListener {
@@ -77,17 +75,31 @@ class PanierActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         val clearPanierButton = findViewById<Button>(R.id.buttonClear)
+        val buyPanierButton = findViewById<Button>(R.id.buttonBuy)
         clearPanierButton.setOnClickListener {
             val text = "Le panier a été vidé"
             clearPanier(text, adapter)
+
+            clearPanierButton.setEnabled(false);
+            buyPanierButton.setEnabled(false);
         }
 
-        val buyPanierButton = findViewById<Button>(R.id.buttonBuy)
         buyPanierButton.setOnClickListener {
             val text = "Votre commande a été enregistré et le panier a été vidé"
             clearPanier(text, adapter)
+
+            clearPanierButton.setEnabled(false);
+            buyPanierButton.setEnabled(false);
         }
+
+        //disables the buttons if the list is empty
+        if(MyRetrofit.getPanier().isEmpty()) {
+            clearPanierButton.setEnabled(false);
+            buyPanierButton.setEnabled(false);
+        }
+
 
         val panierActivity:PanierActivity = this
 
