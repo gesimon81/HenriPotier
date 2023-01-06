@@ -45,6 +45,7 @@ class PanierViewModel : ViewModel() {
                     bestOfferMsg += "Montant achat après réduction: $montantApresReduction euros"
                 }
             }
+            println("loaded: "+books.size)
             state.postValue(books?.let { PanierState(it, false,bestOfferMsg) })
         }
     }
