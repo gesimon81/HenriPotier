@@ -40,7 +40,7 @@ class PanierActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panier)
 
-        println("timber start PanierActivity")
+        println("timber start PanierActivity") //todo a suppr ?
 
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
@@ -91,7 +91,6 @@ class PanierActivity : AppCompatActivity() {
         viewModel.loadPanier();
 
         val packageContext = this
-
         //bouton pour retourner sur la liste
         val showListBooksButton = findViewById<ImageButton>(R.id.showListBooksButton)
         showListBooksButton.setOnClickListener {
